@@ -1,0 +1,18 @@
+version: 0.2
+        
+phases:
+  install:
+    runtime-versions:
+      dotnet: 5.0
+  pre_build:
+    commands:
+      - dotnet restore Porduct_Management/Porduct_Management.csproj
+  build:
+    commands:
+      - dotnet build Porduct_Management/Porduct_Management.csproj
+  post_build:
+    commands:
+      - dotnet publish -c Release -o ./app/ Porduct_Management/Porduct_Management.csproj
+artifacts:
+  files:
+    - '**/*'
